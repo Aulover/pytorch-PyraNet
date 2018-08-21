@@ -18,7 +18,7 @@ See the definition of Pyramid Residual Module in models/prm.py and the network a
 ## Requirements
 The code has been tested with Ubuntu 16.04 and CUDA 8.
 
-- python2.7
+- python 2.7
 - pytorch == 0.4.1  (must be pytorch 0.4.1)
 - opencv-python
 - numpy
