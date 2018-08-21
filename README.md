@@ -7,10 +7,10 @@ This is a pytorch version code of 'Learning Feature Pyramids for Human Pose Esti
 The network designed based on stacked hourglass network. 
 
 Pyranet replace the Residual module with Pyramid Residual module. The network:
-![avatar](https://github.com/IcewineChen/pytorch-PyraNet/imgs/network.png)
+![avatar](https://github.com/IcewineChen/pytorch-PyraNet/blob/master/imgs/network.png)
 
 The authors design a Pyramid Residual module to use features and information of multi-scale:
-![avatar](https://github.com/IcewineChen/pytorch-PyraNet/imgs/prm.png)
+![avatar](https://github.com/IcewineChen/pytorch-PyraNet/blob/master/imgs/prm.png)
 
 In this repo, PRM-A, PRM-B and PRM-C has been realized. Following the comment you can choose these three Pyramid Residual Module. 
 See the definition of Pyramid Residual Module in models/prm.py and the network architecture in models/network.py. 
