@@ -24,6 +24,9 @@ The code has been tested with Ubuntu 16.04 and CUDA 8.
 - numpy
 - progress
 
+## Datasets
+Mpii human pose dataset. Details of path setting: see ref.py. You can set the path in this file.
+
 ## Train
 For example, if you train the PRM network with 300 epochs, batch 6 and 2 stacked hourglass module with one gpu:
 ```
@@ -39,6 +42,7 @@ Finally, you can see more usage of flags in opts.py, such as -expID for specifin
 
 ## Tools
 network_visual.py : Make network architecture visualization
+
 tools/eval_pckh.py : Get the result of pckh@0.x
 
 ## Evaluation
@@ -50,4 +54,4 @@ hg      96.69   95.06     88.38   83.30    86.31    82.81    78.86   87.43
 ```
 
 ## Acknowledgement
-Thanks for the author of 'Learning Feature Pyramids for Human Pose Estimation'.
+Thanks for the authors of 'Learning Feature Pyramids for Human Pose Estimation'.
