@@ -39,14 +39,14 @@ def main():
         log_dict_train, preds = val(0, opt, val_loader, model, criterion)
         sio.savemat(os.path.join(opt.saveDir, 'preds.mat'), mdict = {'preds': preds})
         return
-    # hourglass pretrain一次，先定义gen的训练数据loader
+    # pyramidnet pretrain一次，先定义gen的训练数据loader
     train_loader = torch.utils.data.DataLoader(
             MPII(opt, 'train'), 
             batch_size = opt.trainBatch, 
             shuffle = True if opt.DEBUG == 0 else False,
             num_workers = int(ref.nThreads)
     )
-    # train，调用train方法
+    # 调用train方法
     for epoch in range(1, opt.nEpochs + 1):
         log_dict_train, _ = train(epoch, opt, train_loader, model, criterion, optimizer)
         for k, v in log_dict_train.items():

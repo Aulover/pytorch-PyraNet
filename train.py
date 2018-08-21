@@ -18,13 +18,12 @@ def step(split, epoch, opt, dataLoader, model, criterion, optimizer = None):
 
     nIters = len(dataLoader)
     bar = Bar('{}'.format(opt.expID), max=nIters)
-    # Variable定义
     for i, (input, target, meta) in enumerate(dataLoader):
         input_var = torch.autograd.Variable(input).float().cuda()
         target_var = torch.autograd.Variable(target).float().cuda()
         # model = torch.nn.DataParallel(model,device_ids=[0,1,2])
-        # output = model(input_var)
-        output = torch.nn.parallel.data_parallel(model,input_var,device_ids=[0,1,2,3,4,5])
+        output = model(input_var)
+        # output = torch.nn.parallel.data_parallel(model,input_var,device_ids=[0,1,2,3,4,5])
 
         if opt.DEBUG >= 2:
             gt = getPreds(target.cuda().numpy()) * 4
@@ -39,8 +38,7 @@ def step(split, epoch, opt, dataLoader, model, criterion, optimizer = None):
         loss = criterion(output[0], target_var)
         for k in range(1, opt.nStack):
             loss += criterion(output[k], target_var)
-        # 用于print，对Loss和Accuracy更新，print出来
-        # 运行时报warning，pytorch0.5.0以后的版本或用Tensor.item()代替loss.data[0]
+        # Warning.after pytorch0.5.0 -> Tensor.item()代替loss.data[0]
         Loss.update(loss.data[0], input.size(0))
         Acc.update(Accuracy((output[opt.nStack - 1].data).cpu().numpy(), (target_var.data).cpu().numpy()))
         if split == 'train':

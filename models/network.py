@@ -13,22 +13,18 @@ class Hourglass(nn.Module):
         
         _up1_, _low1_, _low2_, _low3_ = [], [], [], []
         for j in range(self.nModules):
-            # _up1_.append(Residual(self.nFeats, self.nFeats))
             _up1_.append(PRM(self.nFeats, self.nFeats))
         self.low1 = nn.MaxPool2d(kernel_size = 2, stride = 2)
         for j in range(self.nModules):
-            # _low1_.append(Residual(self.nFeats, self.nFeats))
             _low1_.append(PRM(self.nFeats, self.nFeats))
         if self.n > 1:
             self.low2 = Hourglass(n - 1, self.nModules, self.nFeats)
         else:
             for j in range(self.nModules):
-                # _low2_.append(Residual(self.nFeats, self.nFeats))
                 _low2_.append(PRM(self.nFeats, self.nFeats))
             self.low2_ = nn.ModuleList(_low2_)
         
         for j in range(self.nModules):
-            # _low3_.append(Residual(self.nFeats, self.nFeats))
             _low3_.append(PRM(self.nFeats, self.nFeats))
         self.up1_ = nn.ModuleList(_up1_)
         self.low1_ = nn.ModuleList(_low1_)
@@ -75,14 +71,9 @@ class PyramidHourglassNet(nn.Module):
         self.relu = nn.ReLU(inplace=True)
 
         # stacked hourglass
-        self.conv1_ = nn.Conv2d(3, 64, bias = True, kernel_size = 7, stride = 2, padding = 3)
-        self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace = True)
-        # self.r1 = Residual(64, 128)
         self.r1 = PRM(64,128)
-        self.maxpool = nn.MaxPool2d(kernel_size = 2, stride = 2)
-        # self.r4 = Residual(128, 128)
-        # self.r5 = Residual(128, self.nFeats)
+        # self.maxpool = nn.MaxPool2d(kernel_size = 2, stride = 2)
         self.r4 = PRM(128,128)
         self.r5 = PRM(128,self.nFeats)
 
@@ -91,7 +82,6 @@ class PyramidHourglassNet(nn.Module):
             _hourglass.append(Hourglass(4, self.nModules, self.nFeats))
             for j in range(self.nModules):
                 _Residual.append(PRM(self.nFeats, self.nFeats))
-                # _Residual.append(PRM(self.nFeats, self.nFeats))
             lin = nn.Sequential(nn.Conv2d(self.nFeats, self.nFeats, bias = True, kernel_size = 1, stride = 1), 
                                                     nn.BatchNorm2d(self.nFeats), self.relu)
             _lin_.append(lin)

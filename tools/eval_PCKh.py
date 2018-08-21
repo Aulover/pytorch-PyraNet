@@ -10,7 +10,7 @@ threshold = 0.5
 SC_BIAS = 0.6
 pa = [2, 3, 7, 7, 4, 5, 8, 9, 10, 0, 12, 13, 8, 8, 14, 15]
 
-dict = loadmat('/home/chr/experiment/pytorch-pose-hg-3d/src/tools/data/detections_our_format.mat')
+dict = loadmat('/path/to/detections_our_format.mat')
 #dict_preds = loadmat('/home/chr/experiment/pytorch-pose-hg-3d/src/tools/data/preds_160.mat')
 #dict = loadmat('/home/chr/experiment/pytorch-pose-hg-3d/src/tools/data/preds_160.mat')
 print('loaded')
