@@ -24,6 +24,9 @@ The code has been tested with Ubuntu 16.04 and CUDA 8.
 - numpy
 - progress
 
+## Datasets
+Mpii human pose dataset. Details of path setting: see ref.py. You can set the path in this file.
+
 ## Train
 For example, if you train the PRM network with 300 epochs, batch 6 and 2 stacked hourglass module with one gpu:
 ```
