@@ -51,4 +51,4 @@ hg      96.69   95.06     88.38   83.30    86.31    82.81    78.86   87.43
 ```
 
 ## Acknowledgement
-Thanks for the author of 'Learning Feature Pyramids for Human Pose Estimation'.
+Thanks for the authors of 'Learning Feature Pyramids for Human Pose Estimation'.
