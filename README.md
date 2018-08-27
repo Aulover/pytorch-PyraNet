@@ -1,7 +1,7 @@
 # Pytorch-PyraNet
 
 ## Introduction
-This is a pytorch version code of 'Learning Feature Pyramids for Human Pose Estimation', ICCV 2017. Link of paper: https://arxiv.org/pdf/1708.01101.pdf.
+This is a pytorch version reproduce code of 'Learning Feature Pyramids for Human Pose Estimation', ICCV 2017. Link of paper: https://arxiv.org/pdf/1708.01101.pdf.
 
 ## The network
 The network designed based on stacked hourglass network. 
